@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #48A30012;
+}
+
+/* heading css */
+
+.heading {
+    color: #61481C;
+    font-size: 3.5rem;
+}
+
+.heading span {
+    color: #48A300;
+}
+
+/* container css */
+
+.container {
+    background-color: #FBFBFB;
+    max-width: 660px;
+    width: 100%;
+    padding: 35px;
+    padding-top: 25px;
+    border-radius: 15px;
+    margin: 1.8rem;
+    margin-inline: 44px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.content-header {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.content-header img {
+    margin-inline: 20px;
+}
+
+.description {
+    color: #858585;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+.Progress-bar {
+    position: relative;
+}
+
+.Progress-bar,
+.progress-value {
+    width: 100%;
+    min-height: 30px;
+    background-color: #48A3001A;
+    border-radius: 14px;
+    margin-bottom: 45px;
+}
+
+.progress-value {
+    background-color: #48A300;
+    color: #EEFFE0;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 0%;
+    text-wrap: nowrap;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-value span {
+    padding-left: 20px;
+}
+
+.error {
+    color: #FF5151;
+    position: absolute;
+    top: 40px;
+    display: none;
+}
+
+.show-error .error {
+    display: block;
+}
+
+/* add task section css */
+
+.add-task-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.add-task {
+    border: 1px solid #0000001A;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 82px;
+    border-radius: 15px;
+}
+
+.circle {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #61481C4D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 30px;
+    flex-shrink: 0;
+}
+
+.add-task input {
+    outline: none;
+    border: none;
+    height: 100%;
+    font-weight: 500;
+    border-radius: 15px;
+    padding-left: 15px;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.add-task input::placeholder {
+    color: #D9D9D9;
+}
+
+.statement {
+    color: #000;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 700;
+    margin-bottom: 55px;
+}
+
+.footer {
+    text-align: center;
+}
+
+figcaption {
+    position: relative;
+    margin-left: 10px;
+}
+
+#face {
+    position: absolute;
+    margin: 0;
+    z-index: 1;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sun {
+    animation: rotate 3s linear infinite;
+    position: relative;
+    margin: 0;
+}
+
+.completed .circle {
+    background-color: #48A300;
+    border-color: #48A300;
+    background-image: url(images/Vector\ 1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.completed input {
+    color: #48A300;
+    text-decoration: line-through;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .heading {
+        margin-top: 1.5rem;
+        font-size: 2rem;
+    }
+
+    .container {
+        padding-inline: 25px;
+        padding-block: 15px;
+        max-width: 500px;
+        border-radius: 15px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .container {
+        max-width: 400px;
+    }
+
+    .content-header {
+        font-size: 1.8rem;
+    }
+
+    .add-task-section {
+        gap: 20px;
+    }
+
+    .add-task {
+        height: 55px;
+    }
+
+    .circle {
+        margin-left: 24px;
+    }
+
+    .statement {
+        font-size: 12px;
+        margin-bottom: 35px;
+    }
+
+    .description {
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        font-size: 10px;
+    }
+
+    .progress-value span {
+        padding-left: 10px;
+    }
+}
