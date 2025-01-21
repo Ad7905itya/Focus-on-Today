@@ -27,11 +27,11 @@ const FocusInput = ({
                 onChange={ChangeHandler}
                 placeholder='Add new goal...' />
 
-            {value && <span
+            <span
                 onClick={() => Dispatch(DecreaseTaskIndividual({ inputId: id }))}
                 className='relative flex-shrink-0 mr-5 cursor-pointer'>
                 <CgClose size={24} />
-            </span>}
+            </span>
         </div>
     )
 }

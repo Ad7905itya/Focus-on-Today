@@ -41,17 +41,11 @@ const taskLists = createSlice({
     },
     DecreaseTaskIndividual: (state, action) => {
       const { inputId } = action.payload;
-      if(state.length > 2){
+      if (state.length > 2) {
         state.splice(inputId, 1);
-      }else{
+      } else {
         state[inputId].name = "";
         state[inputId].completedTask = false;
-      }
-      return state;
-    },
-    decreaseTasks: (state) => {
-      if (state.length > 1) {
-        state.pop();
       }
       return state;
     },
@@ -70,9 +64,8 @@ export const {
   taskCompleted,
   saveDataLocalStorage,
   increaseTasks,
-  decreaseTasks,
   clearAllTasks,
-  DecreaseTaskIndividual
+  DecreaseTaskIndividual,
 } = taskLists.actions;
 
 export default taskLists.reducer;
