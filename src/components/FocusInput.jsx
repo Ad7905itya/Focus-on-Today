@@ -1,4 +1,6 @@
 import React from 'react'
+import { CgClose } from 'react-icons/cg'
+import { DecreaseTaskIndividual } from '../store/Tasklists'
 
 const FocusInput = ({
     completed,
@@ -6,6 +8,7 @@ const FocusInput = ({
     value,
     ChangeHandler,
     onInputHandler,
+    Dispatch,
     onclick }) => {
     return (
         <div className='flex items-center border-[#0000001A] border-2 bg-white rounded-2xl h-16 overflow-hidden'>
@@ -23,6 +26,12 @@ const FocusInput = ({
                 value={value}
                 onChange={ChangeHandler}
                 placeholder='Add new goal...' />
+
+            {value && <span
+                onClick={() => Dispatch(DecreaseTaskIndividual({ inputId: id }))}
+                className='relative flex-shrink-0 mr-5 cursor-pointer'>
+                <CgClose size={24} />
+            </span>}
         </div>
     )
 }

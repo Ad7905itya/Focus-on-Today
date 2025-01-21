@@ -16,14 +16,13 @@ const FocusContainer = () => {
 
     useEffect(() => {
         Dispatch(saveDataLocalStorage())
-    }, [])
+    }, [initialValue, Dispatch])
 
     const ChangeHandler = useCallback((e) => {
         Dispatch(updateTask({
             inputId: e.target.id,
             inputValue: e.target.value
         }));
-        Dispatch(saveDataLocalStorage());
     }, [Dispatch]);
 
     const onclick = useCallback((e) => {
@@ -38,7 +37,6 @@ const FocusContainer = () => {
             setError(false)
         }
 
-        Dispatch(saveDataLocalStorage());
     }, [initialValue, Dispatch]);
 
 
@@ -54,7 +52,9 @@ const FocusContainer = () => {
         <section className='bg-[#FBFBFB] shadow-2xl m-8 px-11 p-6 rounded-2xl w-full max-w-[660px]'>
             <div className='flex items-center gap-5'>
                 <h2 className='font-bold text-3xl'>Today</h2>
-                <div style={{ backgroundImage: 'url("../Sun1.svg")' }} className='flex justify-center items-center bg-cover bg-no-repeat bg-center w-16 h-16 animate-spin-slow'>
+                <div
+                    style={{ backgroundImage: 'url("../Sun1.svg")' }}
+                    className='flex justify-center items-center bg-cover bg-no-repeat bg-center w-16 h-16 animate-spin-slow'>
                     <img src="../vector.svg" className='animate-wiggle' alt="" />
                 </div>
             </div>
@@ -68,6 +68,7 @@ const FocusContainer = () => {
                         id={index}
                         value={item.name}
                         onclick={onclick}
+                        Dispatch={Dispatch}
                         completed={initialValue[index].completedTask}
                         ChangeHandler={ChangeHandler}
                         onInputHandler={onInputHandler}
@@ -75,7 +76,7 @@ const FocusContainer = () => {
                 ))}
             </div>
 
-            <Add_RemoveTaskBar initialValue={initialValue} />
+            <Add_RemoveTaskBar initialValue={initialValue} Dispatch={Dispatch} />
 
             <div className='flex justify-center items-center mt-4'>
                 <p className='font-bold text-lg'>“Move one step ahead, today!”</p>

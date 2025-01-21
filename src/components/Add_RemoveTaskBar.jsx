@@ -1,20 +1,16 @@
 import React, { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
 import {
     clearAllTasks,
     decreaseTasks,
     increaseTasks,
-    saveDataLocalStorage
 } from '../store/Tasklists'
 import { PiPlusCircleBold } from 'react-icons/pi'
 import { TbTrashFilled } from 'react-icons/tb'
 
-const Add_RemoveTaskBar = ({ initialValue }) => {
-    const Dispatch = useDispatch();
+const Add_RemoveTaskBar = ({ initialValue, Dispatch }) => {
 
     const onClearHandler = useCallback(() => {
         Dispatch(clearAllTasks());
-        Dispatch(saveDataLocalStorage())
     }, [Dispatch])
     return (
         <>
