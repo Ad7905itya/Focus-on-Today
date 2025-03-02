@@ -11,7 +11,6 @@ import Header from './Header';
 
 const FocusContainer = () => {
     const initialValue = useSelector((state) => state.taskLists);
-    const [error, setError] = useState(false);
     const Dispatch = useDispatch();
     const allGoal = useAllGoal();
 
@@ -27,37 +26,17 @@ const FocusContainer = () => {
     }, [Dispatch]);
 
     const onclick = useCallback((e) => {
-        const allInputs = Object.values(initialValue).every((goal) => goal.name);
-        if (allInputs) {
-            Dispatch(taskCompleted({ inputId: e.target.id }))
-        }
-
-        if (!allInputs) {
-            setError(true)
-        } else {
-            setError(false)
-        }
-
+        Dispatch(taskCompleted({ inputId: e.target.id }))
     }, [initialValue, Dispatch]);
 
-
-    const onInputHandler = (e) => {
-        if (initialValue[e.target.id].name !== '') {
-            setError(false)
-        } else {
-            setError(false)
-        }
-    }
-
     return (
-        <section className='bg-[#FBFBFB] shadow-2xl m-8 px-11 p-6 rounded-2xl w-full max-w-[660px]'>
+        <section className='bg-[#FBFBFB] shadow-2xl m-8 p-6 px-11 rounded-2xl w-full max-w-[660px]'>
             <Header />
 
             <ProgressBar
                 allGoal={allGoal}
                 para={para(Statements)}
-                initialValue={initialValue}
-                error={error} />
+                initialValue={initialValue} />
 
             <div className='flex flex-col gap-5 pt-8'>
                 {initialValue.map((item, index) => (
@@ -68,7 +47,6 @@ const FocusContainer = () => {
                         Dispatch={Dispatch}
                         completed={initialValue[index].completedTask}
                         ChangeHandler={ChangeHandler}
-                        onInputHandler={onInputHandler}
                         key={index} />
                 ))}
             </div>
@@ -88,4 +66,4 @@ const FocusContainer = () => {
     )
 }
 
-export default FocusContainer
+export default FocusContainer 

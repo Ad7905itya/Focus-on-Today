@@ -28,25 +28,17 @@ const taskLists = createSlice({
       localStorage.setItem("tasks", JSON.stringify(state));
     },
     clearAllTasks: (state) => {
-      state.map((item) => {
-        item.name = "";
-        item.completedTask = false;
-      });
+      state.splice(0, state.length);
       return state;
     },
     increaseTasks: (state) => {
-      if (state.length < 10) {
+      if (state.length < 20) {
         state.push({ name: "", completedTask: false });
       }
     },
     DecreaseTaskIndividual: (state, action) => {
       const { inputId } = action.payload;
-      if (state.length > 2) {
-        state.splice(inputId, 1);
-      } else {
-        state[inputId].name = "";
-        state[inputId].completedTask = false;
-      }
+      state.splice(inputId, 1);
       return state;
     },
     taskCompleted: (state, action) => {
